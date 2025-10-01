@@ -5,9 +5,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
 import HomeScreen from '../screens/HomeScreen';
-import GamesScreen from '../screens/GamesScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import GameDetailScreen from '../screens/GameDetailScreen';
+import LoginScreen from '../screens/LoginScreen';
+import SignUpScreen from '../screens/SignUpScreen';
+import FarmTypeSelectionScreen from '../screens/FarmTypeSelectionScreen';
 
 // Types
 import { RootStackParamList, TabParamList } from '../types/navigation';
@@ -19,7 +20,6 @@ const MainTabs = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Games" component={GamesScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
@@ -28,13 +28,27 @@ const MainTabs = () => {
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen 
+          name="Login" 
+          component={LoginScreen} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="SignUp" 
+          component={SignUpScreen} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="FarmTypeSelection" 
+          component={FarmTypeSelectionScreen} 
+          options={{ headerShown: false }}
+        />
         <Stack.Screen 
           name="MainTabs" 
           component={MainTabs} 
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="GameDetail" component={GameDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

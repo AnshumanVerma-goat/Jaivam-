@@ -1,10 +1,11 @@
 export type RootStackParamList = {
+  Login: undefined;
+  SignUp: undefined;
+  FarmTypeSelection: undefined;
   MainTabs: undefined;
-  GameDetail: { gameId: string };
 };
 
 export type TabParamList = {
   Home: undefined;
-  Games: undefined;
   Profile: undefined;
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { COLORS, SIZES } from '../constants/theme';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -18,12 +19,11 @@ const HomeScreen = ({ navigation }: Props) => {
       <Text style={styles.title}>Welcome to Jaivam Jeevan</Text>
       <Text style={styles.subtitle}>Your journey to wellness begins here</Text>
       
-      <TouchableOpacity 
-        style={styles.button}
-        onPress={() => navigation.navigate('Games')}
-      >
-        <Text style={styles.buttonText}>Explore Games</Text>
-      </TouchableOpacity>
+      <View style={styles.content}>
+        <Text style={styles.welcomeText}>
+          Track your progress, learn sustainable farming practices, and connect with other farmers.
+        </Text>
+      </View>
     </View>
   );
 };
@@ -33,29 +33,34 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    padding: SIZES.large,
+    backgroundColor: COLORS.background,
   },
   title: {
-    fontSize: 24,
+    fontSize: SIZES.xxLarge,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: SIZES.small,
+    color: COLORS.primary,
   },
   subtitle: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 30,
+    fontSize: SIZES.large,
+    color: COLORS.secondary,
+    marginBottom: SIZES.xLarge,
   },
-  button: {
-    backgroundColor: '#4CAF50',
-    padding: 15,
-    borderRadius: 8,
-    width: '80%',
+  content: {
+    width: '100%',
     alignItems: 'center',
+    padding: SIZES.large,
+    backgroundColor: COLORS.white,
+    borderRadius: SIZES.small,
+    borderWidth: 1,
+    borderColor: COLORS.tertiary,
   },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
+  welcomeText: {
+    fontSize: SIZES.medium,
+    color: COLORS.text,
+    textAlign: 'center',
+    lineHeight: SIZES.large + 4,
   },
 });
 

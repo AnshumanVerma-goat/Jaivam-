@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { COLORS, SIZES } from '../constants/theme';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -22,18 +23,23 @@ const ProfileScreen = ({ navigation }: Props) => {
 
       <View style={styles.statsContainer}>
         <View style={styles.statItem}>
-          <Text style={styles.statNumber}>12</Text>
-          <Text style={styles.statLabel}>Games Played</Text>
+          <Text style={styles.statNumber}>5</Text>
+          <Text style={styles.statLabel}>Crops Growing</Text>
         </View>
         <View style={styles.statItem}>
-          <Text style={styles.statNumber}>8</Text>
-          <Text style={styles.statLabel}>High Scores</Text>
+          <Text style={styles.statNumber}>12</Text>
+          <Text style={styles.statLabel}>Farm Tips</Text>
         </View>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Progress</Text>
-        <Text style={styles.sectionContent}>Track your gaming achievements and wellness journey here.</Text>
+        <Text style={styles.sectionTitle}>Farm Type</Text>
+        <Text style={styles.sectionContent}>Organic Farm</Text>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>About</Text>
+        <Text style={styles.sectionContent}>Track your farming progress, learn sustainable practices, and connect with other farmers in your community.</Text>
       </View>
     </View>
   );
@@ -42,59 +48,66 @@ const ProfileScreen = ({ navigation }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    padding: SIZES.large,
+    backgroundColor: COLORS.background,
   },
   profileHeader: {
     alignItems: 'center',
-    marginBottom: 30,
+    marginBottom: SIZES.xLarge,
   },
   avatarPlaceholder: {
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: '#E1E1E1',
-    marginBottom: 10,
+    backgroundColor: COLORS.tertiary,
+    marginBottom: SIZES.small,
   },
   username: {
-    fontSize: 24,
+    fontSize: SIZES.xxLarge,
     fontWeight: 'bold',
+    color: COLORS.text,
   },
   statsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 30,
+    marginBottom: SIZES.xLarge,
   },
   statItem: {
     alignItems: 'center',
   },
   statNumber: {
-    fontSize: 24,
+    fontSize: SIZES.xLarge,
     fontWeight: 'bold',
-    color: '#4CAF50',
+    color: COLORS.primary,
   },
   statLabel: {
-    color: '#666',
-    marginTop: 5,
+    color: COLORS.secondary,
+    marginTop: SIZES.xSmall,
+    fontSize: SIZES.medium,
   },
   section: {
-    backgroundColor: 'white',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 15,
+    backgroundColor: COLORS.white,
+    padding: SIZES.medium,
+    borderRadius: SIZES.small,
+    marginBottom: SIZES.medium,
     elevation: 2,
-    shadowColor: '#000',
+    shadowColor: COLORS.black,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
+    borderWidth: 1,
+    borderColor: COLORS.tertiary,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: SIZES.large,
     fontWeight: 'bold',
-    marginBottom: 10,
+    color: COLORS.primary,
+    marginBottom: SIZES.small,
   },
   sectionContent: {
-    color: '#666',
-    lineHeight: 20,
+    color: COLORS.text,
+    lineHeight: SIZES.large + 4,
+    fontSize: SIZES.medium,
   },
 });
 
