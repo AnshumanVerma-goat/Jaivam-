@@ -8,10 +8,7 @@ export const COLORS = {
   success: '#4CAF50',
   white: '#FFFFFF',
   black: '#000000',
-  gray: '#808080',
-  dark: '#333333',
-  lightGreen: '#E8F5E9',
-  surface: '#FFFFFF'
+  gray: '#808080'
 };
 
 export const FONTS = {

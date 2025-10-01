@@ -1,114 +1,95 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { COLORS, SIZES } from '../constants/theme';
-import { CompositeNavigationProp } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { RootStackParamList, TabParamList } from '../types/navigation';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import { COLORS } from '../constants/theme';
+import { quests } from '../data/sampleData';
 
-type Props = {
-  navigation: CompositeNavigationProp<
-    BottomTabNavigationProp<TabParamList, 'Profile'>,
-    NativeStackNavigationProp<RootStackParamList>
-  >;
-};
+const ProfileScreen = () => {
+  const completedQuests = quests.filter(q => q.completed);
+  const totalPoints = completedQuests.reduce((sum, q) => sum + q.points, 1000); // Base points
 
-const ProfileScreen = ({ navigation }: Props) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.profileHeader}>
-        <View style={styles.avatarPlaceholder} />
-        <Text style={styles.username}>User Name</Text>
-      </View>
-
-      <View style={styles.statsContainer}>
-        <View style={styles.statItem}>
-          <Text style={styles.statNumber}>5</Text>
-          <Text style={styles.statLabel}>Crops Growing</Text>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View style={styles.header}>
+          <Text style={styles.name}>Your Progress</Text>
         </View>
-        <View style={styles.statItem}>
-          <Text style={styles.statNumber}>12</Text>
-          <Text style={styles.statLabel}>Farm Tips</Text>
+
+        <View style={styles.statsContainer}>
+            <View style={styles.statBox}>
+                <Text style={styles.statValue}>{totalPoints}</Text>
+                <Text style={styles.statLabel}>Total Points</Text>
+            </View>
+             <View style={styles.statBox}>
+                <Text style={styles.statValue}>{completedQuests.length}</Text>
+                <Text style={styles.statLabel}>Missions Done</Text>
+            </View>
         </View>
-      </View>
+        
+        <View style={styles.badgesContainer}>
+            <Text style={styles.sectionTitle}>Your Badges</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.badgeList}>
+                <View style={styles.badge}><Text style={styles.badgeIcon}>💧</Text><Text style={styles.badgeText}>Water Saver</Text></View>
+                <View style={styles.badge}><Text style={styles.badgeIcon}>🌱</Text><Text style={styles.badgeText}>Organic Novice</Text></View>
+                <View style={styles.badge}><Text style={styles.badgeIcon}>🏆</Text><Text style={styles.badgeText}>First Mission</Text></View>
+            </ScrollView>
+        </View>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Farm Type</Text>
-        <Text style={styles.sectionContent}>Organic Farm</Text>
-      </View>
-
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>About</Text>
-        <Text style={styles.sectionContent}>Track your farming progress, learn sustainable practices, and connect with other farmers in your community.</Text>
-      </View>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: SIZES.large,
-    backgroundColor: COLORS.background,
-  },
-  profileHeader: {
+  container: { flex: 1, backgroundColor: '#F5F5F5' },
+  header: {
+    padding: 20,
     alignItems: 'center',
-    marginBottom: SIZES.xLarge,
   },
-  avatarPlaceholder: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: COLORS.tertiary,
-    marginBottom: SIZES.small,
-  },
-  username: {
-    fontSize: SIZES.xxLarge,
-    fontWeight: 'bold',
-    color: COLORS.text,
-  },
+  name: { fontSize: 28, fontWeight: 'bold', color: COLORS.primary },
   statsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: SIZES.xLarge,
+    marginHorizontal: 20,
+    marginBottom: 20,
   },
-  statItem: {
+  statBox: {
+    backgroundColor: '#FFF',
+    padding: 20,
+    borderRadius: 12,
     alignItems: 'center',
-  },
-  statNumber: {
-    fontSize: SIZES.xLarge,
-    fontWeight: 'bold',
-    color: COLORS.primary,
-  },
-  statLabel: {
-    color: COLORS.secondary,
-    marginTop: SIZES.xSmall,
-    fontSize: SIZES.medium,
-  },
-  section: {
-    backgroundColor: COLORS.white,
-    padding: SIZES.medium,
-    borderRadius: SIZES.small,
-    marginBottom: SIZES.medium,
-    elevation: 2,
-    shadowColor: COLORS.black,
+    width: '45%',
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 2,
-    borderWidth: 1,
-    borderColor: COLORS.tertiary,
+    shadowRadius: 4,
+    elevation: 3,
   },
-  sectionTitle: {
-    fontSize: SIZES.large,
-    fontWeight: 'bold',
-    color: COLORS.primary,
-    marginBottom: SIZES.small,
+  statValue: { fontSize: 24, fontWeight: 'bold', color: COLORS.dark },
+  statLabel: { fontSize: 14, color: COLORS.gray, marginTop: 5 },
+  badgesContainer: {
+      marginTop: 20,
+      paddingHorizontal: 20,
   },
-  sectionContent: {
-    color: COLORS.text,
-    lineHeight: SIZES.large + 4,
-    fontSize: SIZES.medium,
+  sectionTitle: { fontSize: 20, fontWeight: 'bold', color: COLORS.dark, marginBottom: 15 },
+  badgeList: {
+      paddingBottom: 10,
   },
+  badge: {
+    backgroundColor: '#FFF',
+    padding: 15,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginRight: 15,
+    width: 120,
+  },
+  badgeIcon: {
+      fontSize: 40,
+  },
+  badgeText: {
+      marginTop: 10,
+      fontWeight: '600',
+      color: COLORS.dark,
+  }
 });
 
 export default ProfileScreen;

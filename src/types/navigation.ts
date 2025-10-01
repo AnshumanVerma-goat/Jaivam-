@@ -1,36 +1,27 @@
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import type { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import type { CompositeScreenProps } from '@react-navigation/native';
+import type { StackScreenProps } from '@react-navigation/stack';
 
 export type RootStackParamList = {
   Login: undefined;
   SignUp: undefined;
   FarmTypeSelection: undefined;
-  MainTabs: undefined;
+  MainTabs: { screen?: keyof MainTabParamList };
 };
 
-export type TabParamList = {
-  Home: undefined;
-  Quests: undefined;
-  Leaderboard: undefined;
-  Chatbot: undefined;
-  Profile: undefined;
+export type MainTabParamList = {
+    Home: undefined;
+    Quests: undefined;
+    Leaderboard: undefined;
+    Chatbot: undefined;
+    Profile: undefined;
 };
 
-export type RootStackScreenProps<T extends keyof RootStackParamList> = 
-  NativeStackScreenProps<RootStackParamList, T>;
+export type LoginScreenProps = StackScreenProps<RootStackParamList, 'Login'>;
+export type SignUpScreenProps = StackScreenProps<RootStackParamList, 'SignUp'>;
+export type FarmTypeSelectionScreenProps = StackScreenProps<RootStackParamList, 'FarmTypeSelection'>;
 
-export type TabScreenProps<T extends keyof TabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<TabParamList, T>,
-  RootStackScreenProps<keyof RootStackParamList>
+export type MainTabScreenProps<T extends keyof MainTabParamList> = CompositeScreenProps<
+  BottomTabScreenProps<MainTabParamList, T>,
+  StackScreenProps<RootStackParamList>
 >;
-
-// Export convenience types for each screen
-export type LoginScreenProps = RootStackScreenProps<'Login'>;
-export type SignUpScreenProps = RootStackScreenProps<'SignUp'>;
-export type FarmTypeSelectionScreenProps = RootStackScreenProps<'FarmTypeSelection'>;
-export type HomeScreenProps = TabScreenProps<'Home'>;
-export type QuestsScreenProps = TabScreenProps<'Quests'>;
-export type LeaderboardScreenProps = TabScreenProps<'Leaderboard'>;
-export type ChatbotScreenProps = TabScreenProps<'Chatbot'>;
-export type ProfileScreenProps = TabScreenProps<'Profile'>;

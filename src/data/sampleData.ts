@@ -1,73 +1,58 @@
-export type FarmType = 'Rice' | 'Wheat' | 'Vegetables' | 'Fruits';
-
-export interface User {
+export interface FarmType {
   id: string;
   name: string;
-  email: string;
-  farmType: FarmType;
+  icon: string; // Emoji for simplicity
+}
+
+export interface LeaderboardEntry {
+  id: string;
+  rank: number;
+  name: string;
   score: number;
-  achievements: string[];
+  location: string;
 }
 
-export const sampleUsers: User[] = [
-  {
-    id: '1',
-    name: 'Rajesh Kumar',
-    email: 'rajesh@example.com',
-    farmType: 'Rice',
-    score: 850,
-    achievements: ['Best Yield 2025', 'Water Conservation Expert']
-  },
-  {
-    id: '2',
-    name: 'Priya Singh',
-    email: 'priya@example.com',
-    farmType: 'Vegetables',
-    score: 920,
-    achievements: ['Organic Farming Pioneer', 'Community Leader']
-  },
-  // Add more sample users
-];
-
-export interface ChatMessage {
-  question: string;
-  answer: string;
-}
-
-export const sampleChatMessages: ChatMessage[] = [
-  {
-    question: "How can I improve soil fertility naturally?",
-    answer: "You can improve soil fertility naturally through several methods: 1) Use of organic compost 2) Crop rotation 3) Green manuring 4) Using bio-fertilizers 5) Mulching"
-  },
-  {
-    question: "What are the best practices for water conservation?",
-    answer: "Key water conservation practices include: 1) Drip irrigation 2) Mulching 3) Rainwater harvesting 4) Evening/early morning watering 5) Soil moisture monitoring"
-  },
-  {
-    question: "How to control pests organically?",
-    answer: "Organic pest control methods include: 1) Neem-based solutions 2) Companion planting 3) Natural predators 4) Trap crops 5) Organic sprays with chili or garlic"
-  }
-];
-
-export interface FarmTip {
+export interface Quest {
   id: string;
   title: string;
   description: string;
-  farmType: FarmType;
+  points: number;
+  completed: boolean;
 }
 
-export const sampleFarmTips: FarmTip[] = [
-  {
-    id: '1',
-    title: 'Optimal Rice Planting Time',
-    description: 'The best time to plant rice is during the monsoon season when there is adequate rainfall.',
-    farmType: 'Rice'
-  },
-  {
-    id: '2',
-    title: 'Vegetable Crop Rotation',
-    description: 'Rotate your vegetable crops every season to maintain soil health and prevent pest buildup.',
-    farmType: 'Vegetables'
-  }
-  // Add more tips
+export interface FaqItem {
+    question: string;
+    answer: string;
+}
+
+export const farmTypes: FarmType[] = [
+  { id: '1', name: 'Coconut Plantation', icon: '🥥' },
+  { id: '2', name: 'Spice Garden (Pepper, Cardamom)', icon: '🌶️' },
+  { id: '3', name: 'Paddy (Rice) Field', icon: '🌾' },
+  { id: '4', name: 'Rubber Plantation', icon: '🌳' },
+  { id: '5', name: 'Mixed Crop Farm', icon: '🏡' },
+];
+
+export const leaderboardData: LeaderboardEntry[] = [
+  { id: '1', rank: 1, name: 'Rajan V.', score: 1250, location: 'Wayanad' },
+  { id: '2', rank: 2, name: 'Anitha K.', score: 1180, location: 'Idukki' },
+  { id: '3', rank: 3, name: 'Suresh P.', score: 1120, location: 'Palakkad' },
+  { id: '4', rank: 4, name: 'Farmer (You)', score: 1050, location: 'Your Location' },
+  { id: '5', rank: 5, name: 'Geetha M.', score: 980, location: 'Thrissur' },
+];
+
+export const quests: Quest[] = [
+  { id: '1', title: 'Soil Health Test', description: 'Perform a basic soil pH test and log the results.', points: 50, completed: true },
+  { id: '2', title: 'Water Conservation', description: 'Implement drip irrigation for at least one row of crops.', points: 100, completed: false },
+  { id: '3', title: 'Organic Pest Control', description: 'Create and apply a neem oil-based pesticide.', points: 75, completed: false },
+  { id: '4', title: 'Composting Kickstart', description: 'Start a new compost pile with farm waste.', points: 60, completed: false },
+];
+
+export const faqData: FaqItem[] = [
+    { question: "How do I improve my soil health?", answer: "Improving soil health starts with regular testing. Try adding organic compost, rotating your crops each season, and planting cover crops like legumes to add nitrogen back into the soil." },
+    { question: "What is the best way to save water?", answer: "Drip irrigation is highly effective as it delivers water directly to the plant roots, minimizing evaporation. Also, consider collecting rainwater in tanks for later use." },
+    { question: "How to deal with pests naturally?", answer: "Neem oil solution is a great organic pesticide. You can also introduce beneficial insects like ladybugs that eat aphids. Planting marigolds around your crops can also deter many common pests." },
+    { question: "When should I harvest my coconuts?", answer: "For tender coconut water, harvest around 6-7 months. For mature coconuts for oil or cooking, wait until they are 11-12 months old, when the husk is brown and dry." },
+    { question: "What is a good organic fertilizer?", answer: "Composted farm waste is excellent. You can also use cow dung manure (after aging it), vermicompost, or bone meal. These release nutrients slowly and improve soil structure." },
+     // Add up to 10-12 questions here
 ];
