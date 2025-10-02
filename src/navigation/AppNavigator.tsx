@@ -45,7 +45,7 @@ function MainTabs() {
 
 export default function AppNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
+    <Stack.Navigator screenOptions={{ headerShown: false, animationEnabled: true }} initialRouteName="Login">
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="FarmTypeSelection" component={FarmTypeSelectionScreen} />

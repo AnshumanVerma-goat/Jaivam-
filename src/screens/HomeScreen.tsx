@@ -43,7 +43,18 @@ const styles = StyleSheet.create({
   header: { padding: 20 },
   greeting: { fontSize: 28, fontWeight: 'bold', color: COLORS.text },
   welcome: { fontSize: 16, color: COLORS.gray, marginTop: 4 },
-  scoreCard: { backgroundColor: COLORS.primary, marginHorizontal: 20, borderRadius: 16, padding: 25, alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.2, shadowRadius: 5, elevation: 6 },
+  scoreCard: { 
+    backgroundColor: COLORS.primary, 
+    marginHorizontal: 20, 
+    borderRadius: 16, 
+    padding: 25, 
+    alignItems: 'center', 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 4 }, 
+    shadowOpacity: 0.2, 
+    shadowRadius: 5, 
+    elevation: 6,
+  },
   scoreTitle: { fontSize: 16, color: '#FFFFFF', opacity: 0.8 },
   score: { fontSize: 48, fontWeight: 'bold', color: '#FFFFFF', marginVertical: 5 },
   scoreSubtitle: { fontSize: 14, color: '#FFFFFF', opacity: 0.9 },
@@ -56,4 +67,4 @@ const styles = StyleSheet.create({
   questPoints: { fontSize: 16, fontWeight: 'bold', color: COLORS.secondary },
 });
 
-export default HomeScreen;
+export default HomeScreen;  

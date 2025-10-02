@@ -1,27 +1,12 @@
 export const COLORS = {
-  primary: '#9a692f',
-  secondary: '#4e4e2b',
-  tertiary: '#8e8e62',
-  background: '#FFFFFF',
-  text: '#333333',
-  error: '#FF6B6B',
-  success: '#4CAF50',
-  white: '#FFFFFF',
-  black: '#000000',
-  gray: '#808080'
-};
-
-export const FONTS = {
-  regular: 'System',
-  medium: 'System',
-  bold: 'System'
-};
-
-export const SIZES = {
-  xSmall: 10,
-  small: 12,
-  medium: 16,
-  large: 20,
-  xLarge: 24,
-  xxLarge: 32
+  primary: '#2E7D32',    // A strong, earthy green
+  secondary: '#FF8F00',  // A vibrant, warm orange for accents
+  tertiary: '#4e4e2b',   // A muted olive green for additional accents
+  background: '#F5F5F5', // A light, clean background
+  text: '#333333',       // Standard dark text for readability
+  error: '#D32F2F',      // Error color
+  success: '#388E3C',    // Success color
+  white: '#FFFFFF',      // Pure white
+  black: '#000000',      // Pure black
+  gray: '#888888',       // For subtitles and less important text
 };

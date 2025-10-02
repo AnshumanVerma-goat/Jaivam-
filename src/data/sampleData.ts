@@ -1,73 +1,35 @@
 export interface FarmType {
-  id: string;
-  name: string;
-  icon: string; // Emoji for simplicity
-}
-
-export interface LeaderboardEntry {
-  id: string;
-  rank: number;
-  name: string;
-  score: number;
-  location: string;
-}
-
-export interface Quest {
-  id: string;
-  title: string;
-  description: string;
-  points: number;
-  completed: boolean;
-}
-
-export interface FaqItem {
-    question: string;
-    answer: string;
+    id: string;
+    name: string;
+    icon: string;
 }
 
 export const farmTypes: FarmType[] = [
-  { id: '1', name: 'Coconut Plantation', icon: '🥥' },
-  { id: '2', name: 'Spice Garden (Pepper, Cardamom)', icon: '🌶️' },
-  { id: '3', name: 'Paddy (Rice) Field', icon: '🌾' },
-  { id: '4', name: 'Rubber Plantation', icon: '🌳' },
-  { id: '5', name: 'Mixed Crop Farm', icon: '🏡' },
+    { id: '1', name: 'Coconut & Spice Farm', icon: '🌴' },
+    { id: '2', name: 'Rubber Plantation', icon: '🌳' },
+    { id: '3', name: 'Paddy (Rice) Cultivation', icon: '🌾' },
+    { id: '4', name: 'Mixed Crop Farm (Vegetables & Fruits)', icon: '🌱' },
+    { id: '5', name: 'Tea & Coffee Estate', icon: '☘️' },
 ];
 
-export const leaderboardData: LeaderboardEntry[] = [
-  { id: '1', rank: 1, name: 'Rajan V.', score: 1250, location: 'Wayanad' },
-  { id: '2', rank: 2, name: 'Anitha K.', score: 1180, location: 'Idukki' },
-  { id: '3', rank: 3, name: 'Suresh P.', score: 1120, location: 'Palakkad' },
-  { id: '4', rank: 4, name: 'Farmer (You)', score: 1050, location: 'Your Location' },
-  { id: '5', rank: 5, name: 'Geetha M.', score: 980, location: 'Thrissur' },
+export const leaderboardData = [
+    { id: '1', name: 'Ravi Kumar', farmType: 'Paddy Cultivation', points: 1550 },
+    { id: '2', name: 'Anjali Menon', farmType: 'Coconut & Spice Farm', points: 1420 },
+    { id: '3', name: 'Suresh Pillai', farmType: 'Rubber Plantation', points: 1300 },
+    { id: '4', name: 'Deepa Nair', farmType: 'Mixed Crop Farm', points: 1150 },
+    { id: '5', name: 'You', farmType: 'Coconut & Spice Farm', points: 1050 },
 ];
 
-export const quests: Quest[] = [
-  { id: '1', title: 'Soil Health Test', description: 'Perform a basic soil pH test and log the results.', points: 50, completed: true },
-  { id: '2', title: 'Water Conservation', description: 'Implement drip irrigation for at least one row of crops.', points: 100, completed: false },
-  { id: '3', title: 'Organic Pest Control', description: 'Create and apply a neem oil-based pesticide.', points: 75, completed: false },
-  { id: '4', title: 'Composting Kickstart', description: 'Start a new compost pile with farm waste.', points: 60, completed: false },
+export const quests = [
+    { id: 'q1', title: 'Implement Drip Irrigation', description: 'Install a drip irrigation system for 1 acre of your farm to save water.', points: 150, completed: true },
+    { id: 'q2', title: 'Use Organic Pesticides', description: 'Switch to neem oil or other organic pesticides for one crop cycle.', points: 100, completed: true },
+    { id: 'q3', title: 'Start Composting', description: 'Create a compost pit for farm waste.', points: 80, completed: true },
+    { id: 'q4', title: 'Soil Health Test', description: 'Get a soil health card or test your soil for nutrient levels.', points: 120, completed: false },
+    { id: 'q5', title: 'Introduce Cover Crops', description: 'Plant cover crops like legumes on a fallow plot to improve soil nitrogen.', points: 200, completed: false },
 ];
 
-export const chatbotData: FaqItem[] = [
-  {
-    question: "What is organic farming?",
-    answer: "Organic farming is a method of agriculture that avoids the use of synthetic fertilizers, pesticides, and other artificial inputs. It focuses on maintaining soil health through natural processes."
-  },
-  {
-    question: "How do I start composting?",
-    answer: "To start composting: 1) Choose a shady spot for your compost pile, 2) Layer green materials (food scraps, grass) with brown materials (leaves, twigs), 3) Keep it moist but not wet, 4) Turn the pile regularly."
-  },
-  {
-    question: "What are natural pest control methods?",
-    answer: "Natural pest control methods include: companion planting, using neem oil spray, introducing beneficial insects, crop rotation, and maintaining healthy soil."
-  }
-];
-
-export const faqData: FaqItem[] = [
-    { question: "How do I improve my soil health?", answer: "Improving soil health starts with regular testing. Try adding organic compost, rotating your crops each season, and planting cover crops like legumes to add nitrogen back into the soil." },
-    { question: "What is the best way to save water?", answer: "Drip irrigation is highly effective as it delivers water directly to the plant roots, minimizing evaporation. Also, consider collecting rainwater in tanks for later use." },
-    { question: "How to deal with pests naturally?", answer: "Neem oil solution is a great organic pesticide. You can also introduce beneficial insects like ladybugs that eat aphids. Planting marigolds around your crops can also deter many common pests." },
-    { question: "When should I harvest my coconuts?", answer: "For tender coconut water, harvest around 6-7 months. For mature coconuts for oil or cooking, wait until they are 11-12 months old, when the husk is brown and dry." },
-    { question: "What is a good organic fertilizer?", answer: "Composted farm waste is excellent. You can also use cow dung manure (after aging it), vermicompost, or bone meal. These release nutrients slowly and improve soil structure." },
-     // Add up to 10-12 questions here
+export const chatbotData = [
+    { id: 'c1', question: 'How can I improve soil health?', answer: 'Improving soil health involves several practices. Start by adding organic matter like compost, use cover crops to prevent erosion and add nutrients, and practice crop rotation to avoid depleting specific nutrients.' },
+    { id: 'c2', question: 'What are the benefits of drip irrigation?', answer: 'Drip irrigation is highly efficient. It reduces water wastage by delivering water directly to the plant roots, minimizes weed growth, and can reduce the spread of fungal diseases by keeping foliage dry.' },
+    { id: 'c3', question: 'Which organic pesticide is best for my crops?', answer: 'Neem oil is a great broad-spectrum organic pesticide. It works against many common pests. For specific issues, creating a spray from garlic, onion, and chili can also be effective.' },
 ];

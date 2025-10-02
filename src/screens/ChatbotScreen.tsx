@@ -14,7 +14,7 @@ const ChatbotScreen = () => {
             </View>
             <FlatList
                 data={chatbotData}
-                keyExtractor={(item) => item.question}
+                keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
                     <TouchableOpacity style={styles.questionCard} onPress={() => setActiveQuestion(item)}>
                         <Text style={styles.questionText}>{item.question}</Text>
