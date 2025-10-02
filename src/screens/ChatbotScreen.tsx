@@ -1,101 +1,52 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, FlatList, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
-import { faqData } from '../data/sampleData';
+import { SafeAreaView, Text, StyleSheet, TouchableOpacity, FlatList, View } from 'react-native';
+import { chatbotData } from '../data/sampleData';
 import { COLORS } from '../constants/theme';
 
 const ChatbotScreen = () => {
-    const [messages, setMessages] = useState([{ text: 'Hello! I am your farming assistant. Ask me a question from the list below.', isUser: false }]);
-    
-    const handleQuestionSelect = (question) => {
-        const userMessage = { text: question, isUser: true };
-        
-        const faqItem = faqData.find(item => item.question.toLowerCase() === question.toLowerCase());
-        const botResponse = { text: faqItem ? faqItem.answer : "I'm sorry, I don't have an answer for that right now.", isUser: false };
-
-        setMessages(prev => [...prev, userMessage, botResponse]);
-    };
+    const [activeQuestion, setActiveQuestion] = useState<any>(null);
 
     return (
-        <KeyboardAvoidingView 
-            style={styles.container}
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={100}
-        >
-            <FlatList
-                data={messages}
-                keyExtractor={(_, index) => index.toString()}
-                renderItem={({ item }) => (
-                    <View style={[styles.messageBubble, item.isUser ? styles.userBubble : styles.botBubble]}>
-                        <Text style={item.isUser ? styles.userText : styles.botText}>{item.text}</Text>
-                    </View>
-                )}
-                contentContainerStyle={styles.messageList}
-            />
-            <View style={styles.inputContainer}>
-                <Text style={styles.suggestionHeader}>Select a question:</Text>
-                <FlatList
-                    data={faqData}
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    keyExtractor={(item) => item.question}
-                    renderItem={({item}) => (
-                        <TouchableOpacity style={styles.suggestionChip} onPress={() => handleQuestionSelect(item.question)}>
-                            <Text style={styles.suggestionText}>{item.question}</Text>
-                        </TouchableOpacity>
-                    )}
-                    contentContainerStyle={{ paddingVertical: 10 }}
-                />
+        <SafeAreaView style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.title}>Jaivam AI Assistant</Text>
+                <Text style={styles.subtitle}>Select a question to get an instant answer.</Text>
             </View>
-        </KeyboardAvoidingView>
+            <FlatList
+                data={chatbotData}
+                keyExtractor={(item) => item.question}
+                renderItem={({ item }) => (
+                    <TouchableOpacity style={styles.questionCard} onPress={() => setActiveQuestion(item)}>
+                        <Text style={styles.questionText}>{item.question}</Text>
+                    </TouchableOpacity>
+                )}
+                contentContainerStyle={{ paddingHorizontal: 20 }}
+            />
+            {activeQuestion && (
+                <View style={styles.answerContainer}>
+                    <Text style={styles.answerTitle}>{activeQuestion.question}</Text>
+                    <Text style={styles.answerText}>{activeQuestion.answer}</Text>
+                    <TouchableOpacity style={styles.closeButton} onPress={() => setActiveQuestion(null)}>
+                        <Text style={styles.closeButtonText}>Close</Text>
+                    </TouchableOpacity>
+                </View>
+            )}
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#F0F4F8' },
-    messageList: { padding: 10 },
-    messageBubble: {
-        padding: 15,
-        borderRadius: 20,
-        marginBottom: 10,
-        maxWidth: '80%',
-    },
-    userBubble: {
-        backgroundColor: COLORS.primary,
-        alignSelf: 'flex-end',
-    },
-    botBubble: {
-        backgroundColor: '#FFFFFF',
-        alignSelf: 'flex-start',
-        borderWidth: 1,
-        borderColor: '#E0E0E0'
-    },
-    userText: { color: '#FFFFFF', fontSize: 16 },
-    botText: { color: '#333333', fontSize: 16 },
-    inputContainer: { 
-      paddingHorizontal: 10, 
-      paddingBottom: 20, 
-      borderTopWidth: 1, 
-      borderTopColor: '#E0E0E0',
-      backgroundColor: '#FFFFFF'
-    },
-    suggestionHeader: {
-        fontSize: 14,
-        fontWeight: 'bold',
-        color: COLORS.gray,
-        marginTop: 10,
-        marginLeft: 5,
-    },
-    suggestionChip: {
-        backgroundColor: '#E3F2FD',
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-        borderRadius: 20,
-        marginHorizontal: 5,
-    },
-    suggestionText: {
-        color: COLORS.primary,
-        fontWeight: '600',
-    }
+    container: { flex: 1, backgroundColor: '#F9F9F9' },
+    header: { padding: 20, borderBottomWidth: 1, borderBottomColor: '#EEE' },
+    title: { fontSize: 32, fontWeight: 'bold', color: COLORS.primary },
+    subtitle: { fontSize: 16, color: COLORS.gray, marginTop: 4 },
+    questionCard: { backgroundColor: '#FFFFFF', padding: 20, borderRadius: 10, marginVertical: 8, borderWidth: 1, borderColor: '#EEE' },
+    questionText: { fontSize: 16, fontWeight: '500', color: COLORS.text },
+    answerContainer: { position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: 'white', padding: 25, borderTopLeftRadius: 20, borderTopRightRadius: 20, shadowColor: '#000', shadowOffset: { width: 0, height: -3 }, shadowOpacity: 0.1, shadowRadius: 5, elevation: 10, },
+    answerTitle: { fontSize: 18, fontWeight: 'bold', color: COLORS.primary, marginBottom: 10, },
+    answerText: { fontSize: 16, color: COLORS.text, lineHeight: 24, },
+    closeButton: { backgroundColor: COLORS.primary, padding: 15, borderRadius: 10, alignItems: 'center', marginTop: 20, },
+    closeButtonText: { color: 'white', fontSize: 16, fontWeight: 'bold', },
 });
 
 export default ChatbotScreen;

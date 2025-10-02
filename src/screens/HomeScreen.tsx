@@ -41,7 +41,7 @@ const HomeScreen = ({ navigation }: MainTabScreenProps<'Home'>) => {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F9F9F9' },
   header: { padding: 20 },
-  greeting: { fontSize: 28, fontWeight: 'bold', color: COLORS.dark },
+  greeting: { fontSize: 28, fontWeight: 'bold', color: COLORS.text },
   welcome: { fontSize: 16, color: COLORS.gray, marginTop: 4 },
   scoreCard: { backgroundColor: COLORS.primary, marginHorizontal: 20, borderRadius: 16, padding: 25, alignItems: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.2, shadowRadius: 5, elevation: 6 },
   scoreTitle: { fontSize: 16, color: '#FFFFFF', opacity: 0.8 },
@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
   scoreSubtitle: { fontSize: 14, color: '#FFFFFF', opacity: 0.9 },
   questsContainer: { marginTop: 30, paddingHorizontal: 20 },
   questsHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 15 },
-  sectionTitle: { fontSize: 20, fontWeight: 'bold', color: COLORS.dark },
+  sectionTitle: { fontSize: 20, fontWeight: 'bold', color: COLORS.text },
   viewAll: { fontSize: 14, color: COLORS.primary, fontWeight: '600' },
   questCard: { backgroundColor: '#FFFFFF', padding: 20, borderRadius: 12, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10, borderWidth: 1, borderColor: '#E0E0E0' },
-  questTitle: { fontSize: 16, fontWeight: '600', color: COLORS.dark },
+  questTitle: { fontSize: 16, fontWeight: '600', color: COLORS.text },
   questPoints: { fontSize: 16, fontWeight: 'bold', color: COLORS.secondary },
 });
 

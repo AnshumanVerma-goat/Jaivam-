@@ -48,6 +48,21 @@ export const quests: Quest[] = [
   { id: '4', title: 'Composting Kickstart', description: 'Start a new compost pile with farm waste.', points: 60, completed: false },
 ];
 
+export const chatbotData: FaqItem[] = [
+  {
+    question: "What is organic farming?",
+    answer: "Organic farming is a method of agriculture that avoids the use of synthetic fertilizers, pesticides, and other artificial inputs. It focuses on maintaining soil health through natural processes."
+  },
+  {
+    question: "How do I start composting?",
+    answer: "To start composting: 1) Choose a shady spot for your compost pile, 2) Layer green materials (food scraps, grass) with brown materials (leaves, twigs), 3) Keep it moist but not wet, 4) Turn the pile regularly."
+  },
+  {
+    question: "What are natural pest control methods?",
+    answer: "Natural pest control methods include: companion planting, using neem oil spray, introducing beneficial insects, crop rotation, and maintaining healthy soil."
+  }
+];
+
 export const faqData: FaqItem[] = [
     { question: "How do I improve my soil health?", answer: "Improving soil health starts with regular testing. Try adding organic compost, rotating your crops each season, and planting cover crops like legumes to add nitrogen back into the soil." },
     { question: "What is the best way to save water?", answer: "Drip irrigation is highly effective as it delivers water directly to the plant roots, minimizing evaporation. Also, consider collecting rainwater in tanks for later use." },
